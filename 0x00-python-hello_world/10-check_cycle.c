@@ -9,22 +9,15 @@
  */
 int check_cycle(listint_t *list)
 {
-	int loop1 = 0, loop2 = 0;
 	listint_t *current = list, *search = list;
 
-	while (current != NULL)
+	while (current != NULL && search && search->next)
 	{
 		current = current->next;
-		loop1++;
-		while (loop2 != loop1)
-		{
-			if (search == current && loop2 < loop1)
-				return (1);
-			search = search->next;
-			loop2++;
-		}
-		search = list;
-		loop2 = 0;
+		search = search->next->next;
+
+		if (search == current)
+			return (1);
 	}
 
 	return (0);
