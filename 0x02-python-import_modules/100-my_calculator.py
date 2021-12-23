@@ -28,7 +28,7 @@ if __name__ == '__main__':
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     elif len(argv[2]) != 1 or not symbol():
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
     else:
         print("{} {} {} = {}".format(argv[1], argv[2], argv[3], operate()))
