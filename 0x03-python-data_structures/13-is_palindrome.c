@@ -61,7 +61,7 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *reverse, *current;
 
-	if (head == NULL || *head == NULL || (*head)->next == NULL)
+	if (head == NULL || *head == NULL)
 		return (1);
 
 	reverse = new_linked_list(head);
