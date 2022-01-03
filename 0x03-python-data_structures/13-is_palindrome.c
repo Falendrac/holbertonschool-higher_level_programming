@@ -1,52 +1,21 @@
 #include "lists.h"
 
-/**
- * add_nodeint_start - adds a new node at the start of a listint_t list
- * @head: pointer to pointer of first node of listint_t list
- * @n: integer to be included in new node
- * Return: address of the new element or NULL if it fails
- */
-listint_t *add_nodeint_start(listint_t **head, const int n)
+int is_palindrome_recursive(listint_t **start, listint_t *end)
 {
-	listint_t *new;
+	int isp = 0;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
+	if (end == NULL)
+		return (1);
 
-	new->n = n;
-	new->next = NULL;
+	if (is_palindrome_recursive(start, end->next) == 0)
+		return (0);
 
-	if (*head == NULL)
-		*head = new;
-	else
-	{
-		new->next = *head;
-		*head = new;
-	}
+	if ((*start)->n == end->n)
+		isp = 1;
 
-	return (new);
-}
+	*start = (*start)->next;
 
-/**
- * new_linked_list - Copy a linked list in reverse
- *
- * @head: pointer to pointer of first node of listint_t list
- *
- * Return: A listint_t in reverse
- */
-listint_t *new_linked_list(listint_t **head)
-{
-	listint_t *new = NULL;
-	listint_t *current = *head;
-
-	while (current != NULL)
-	{
-		add_nodeint_start(&new, current->n);
-		current = current->next;
-	}
-
-	return (new);
+	return (isp);
 }
 
 /**
@@ -59,21 +28,12 @@ listint_t *new_linked_list(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *reverse, *current;
+	listint_t *current;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return (1);
 
-	reverse = new_linked_list(head);
 	current = *head;
 
-	while (current != NULL && reverse != NULL)
-	{
-		if (current->n != reverse->n)
-			return (0);
-		current = current->next;
-		reverse = reverse->next;
-	}
-
-	return (1);
+	return (is_palindrome_recursive(&current, current));
 }
