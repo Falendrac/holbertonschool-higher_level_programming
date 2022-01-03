@@ -4,5 +4,8 @@ def print_matrix_integer(matrix=[[]]):
         length_list_x = len(matrix[loop1])
         if length_list_x != 0:
             for loop2 in range(0, length_list_x):
-                print("{:d}".format(matrix[loop1][loop2]), end=" ")
+                if loop2 != length_list_x - 1:
+                    print("{:d}".format(matrix[loop1][loop2]), end=" ")
+                else:
+                    print("{:d}".format(matrix[loop1][loop2]), end="")
         print()
