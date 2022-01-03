@@ -29,27 +29,6 @@ listint_t *add_nodeint_start(listint_t **head, const int n)
 }
 
 /**
- * length_list - Return the length of a linked list
- *
- * @head: pointer to pointer of first node of listint_t list
- *
- * Return: The length of listint_t list
- */
-int length_list(listint_t **head)
-{
-	int length = 0;
-	listint_t *current = *head;
-
-	while (current != NULL)
-	{
-		current = current->next;
-		length++;
-	}
-
-	return (length);
-}
-
-/**
  * new_linked_list - Copy a linked list in reverse
  *
  * @head: pointer to pointer of first node of listint_t list
@@ -80,28 +59,20 @@ listint_t *new_linked_list(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-	int length, end;
 	listint_t *reverse, *current;
 
 	if (head == NULL || *head == NULL)
 		return (1);
 
-	length = length_list(head);
-	end = length;
-
-	if (length == 1)
-		return (1);
-
 	reverse = new_linked_list(head);
 	current = *head;
 
-	while (end > length / 2)
+	while (current != NULL && reverse != NULL)
 	{
 		if (current->n != reverse->n)
 			return (0);
 		current = current->next;
 		reverse = reverse->next;
-		end--;
 	}
 
 	return (1);
