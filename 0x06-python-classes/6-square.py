@@ -101,11 +101,14 @@ class Square:
         Typerror
             If position is not a tuple of integer
         """
-        if isinstance(val, tuple) and val[0] >= 0 and val[1] >= 0 \
-                and all(isinstance(v, int) for v in val) and len(val) == 2:
-            self.__position = val
-        else:
+        if type(val) is not tuple or not all(isinstance(v, int) for v in val):
             raise TypeError("position must be a tuple of 2 positive integers")
+        elif val[0] < 0 or val[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif len(val) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = val
 
     def area(self):
         """Return the value of the current square area"""
