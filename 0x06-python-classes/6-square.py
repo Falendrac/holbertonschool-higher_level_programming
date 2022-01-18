@@ -87,13 +87,13 @@ class Square:
         return self.__position
 
     @position.setter
-    def position(self, value):
+    def position(self, val):
         """
         The setter of position
 
         Parameters
         ----------
-        value: tuple int
+        val: tuple int
             the position of the square
 
         Raises
@@ -101,10 +101,10 @@ class Square:
         Typerror
             If position is not a tuple of integer
         """
-        if type(value) is not tuple or not all(isinstance(v, int) for v in value):
+        if type(val) is not tuple or not all(isinstance(v, int) for v in val):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self.__position = value
+            self.__position = val
 
     def area(self):
         """Return the value of the current square area"""
