@@ -121,7 +121,11 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            for loopw in range(self.position[1]):
+            for loopw in range(0, self.__size + self.__position[1]):
+                for looph in range(0, self.__size + self.__position[0]):
+                    if loopw >= self.position[1]:
+                        if looph >= self.position[0]:
+                            print("#", end="")
+                        else:
+                            print(" ", end="")
                 print()
-            for looph in range(self.__size):
-                print("{}{}".format(" " * self.__position[0], "#" * self.size))
