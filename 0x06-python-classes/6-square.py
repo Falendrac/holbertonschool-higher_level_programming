@@ -118,13 +118,14 @@ class Square:
         """
         my_print - Print the square with the character #
         """
-        for loopw in range(0, self.__size + self.__position[1]):
-            for looph in range(0, self.__size + self.__position[0]):
-                if loopw >= self.position[1]:
-                    if looph >= self.position[0]:
-                        print("#", end="")
-                    else:
-                        print(" ", end="")
-            print()
         if self.__size == 0:
             print()
+        else:
+            for loopw in range(0, self.__size + self.__position[1]):
+                for looph in range(0, self.__size + self.__position[0]):
+                    if loopw >= self.position[1]:
+                        if looph >= self.position[0]:
+                            print("#", end="")
+                        else:
+                            print(" ", end="")
+                print()
