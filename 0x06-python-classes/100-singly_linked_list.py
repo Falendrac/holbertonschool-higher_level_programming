@@ -53,8 +53,8 @@ class Node:
         next_node : None
             the next_node of linked list
         """
-        self.__data = data
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
