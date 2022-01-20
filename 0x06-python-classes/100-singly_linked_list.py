@@ -145,7 +145,7 @@ class SinglyLinkedList:
         head : None
             the head of the linked list
         """
-        self.head = None
+        self.__head = None
 
     def sorted_insert(self, value):
         """
@@ -159,18 +159,18 @@ class SinglyLinkedList:
             the value of the new node
         """
         newnode = Node(value)
-        if self.head:
-            if self.head.data > value:
-                newnode.next_node = self.head
-                self.head = newnode
+        if self.__head:
+            if self.__head.data > value:
+                newnode.next_node = self.__head
+                self.__head = newnode
             else:
-                current = self.head
+                current = self.__head
                 while(current.next_node and current.next_node.data < value):
                     current = current.next_node
                 newnode.next_node = current.next_node
                 current.next_node = newnode
         else:
-            self.head = newnode
+            self.__head = newnode
 
     def __str__(self):
         """
@@ -178,7 +178,7 @@ class SinglyLinkedList:
 
         Print all value
         """
-        current = self.head
+        current = self.__head
         while current and current.next_node:
             print("{}".format(current.data))
             current = current.next_node
