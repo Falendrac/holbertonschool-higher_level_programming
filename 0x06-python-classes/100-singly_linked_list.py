@@ -179,6 +179,8 @@ class SinglyLinkedList:
         Print all value
         """
         current = self.__head
+        if not current:
+            return ("")
         while current and current.next_node:
             print("{}".format(current.data))
             current = current.next_node
