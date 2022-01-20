@@ -131,6 +131,11 @@ class Square:
                 print()
 
     def __str__(self):
+        """
+        str - Convert the values of linked list in str
+
+        Print square
+        """
         if self.__size == 0:
             return ""
         else:
