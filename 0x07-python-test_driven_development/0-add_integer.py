@@ -16,6 +16,7 @@ Example for the function add_integer:
 """
 import doctest
 
+
 def add_integer(a, b=98):
     """
     Returns the addition of a and b
