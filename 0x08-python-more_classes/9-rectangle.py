@@ -51,7 +51,8 @@ class Rectangle:
     bigger_or_equal(rect_1, rect_2)
         compare two rectangle and return the bigger
     """
-
+    __height = None
+    __width = None
     number_of_instances = 0
     print_symbol = "#"
 
@@ -103,8 +104,7 @@ class Rectangle:
             raise TypeError("width must be an integer")
         elif value < 0:
             raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+        self.__width = value
 
     @property
     def height(self):
@@ -137,8 +137,7 @@ class Rectangle:
             raise TypeError("height must be an integer")
         elif value < 0:
             raise ValueError("height must be >= 0")
-        else:
-            self.__height = value
+        self.__height = value
 
     def area(self):
         """
@@ -152,8 +151,7 @@ class Rectangle:
         """
         if self.__height == 0 or self.__width == 0:
             return 0
-        else:
-            return 2 * (self.__height + self.__width)
+        return 2 * (self.__height + self.__width)
 
     def __str__(self):
         """
