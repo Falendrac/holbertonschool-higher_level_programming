@@ -232,4 +232,4 @@ class Rectangle:
         size : int
             the size of the new rectangle
         """
-        return cls(size, size)
+        return Rectangle(size, size)
