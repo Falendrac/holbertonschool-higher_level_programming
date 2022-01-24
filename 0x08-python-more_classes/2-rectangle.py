@@ -35,18 +35,57 @@ class Rectangle:
 
     height(self, value)
         the setter of height
+
+    area(self)
+        return the area of the rectangle (height * width)
+
+    perimeter(self)
+        return the perimeter of the rectangle ( 2 * (height + width))
     """
 
     def __init__(self, width=0, height=0):
+        """
+        Init methods for class Rectangle
+
+        ...
+
+        Parameters
+        ----------
+        width : int
+            the width of the rectangle
+        height : int
+            the height of the rectangle
+        """
         self.height = height
         self.width = width
 
     @property
     def width(self):
+        """
+        getter for width in class rectangle
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """
+        setter for width in class rectangle
+
+        ...
+
+        Parameter
+        ---------
+        value : int
+            the value of width we test and set
+
+        Raises
+        ------
+        TypeError
+            if value is not an int
+
+        ValueError
+            if value is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value < 0:
@@ -56,10 +95,31 @@ class Rectangle:
 
     @property
     def height(self):
+        """
+        getter for height in class rectangle
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
+        """
+        setter for height in class rectangle
+
+        ...
+
+        Parameter
+        ---------
+        value : int
+            the value of height we test and set
+
+        Raises
+        ------
+        TypeError
+            if value is not an int
+
+        ValueError
+            if value is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value < 0:
@@ -68,9 +128,15 @@ class Rectangle:
             self.__height = value
 
     def area(self):
+        """
+        return the area of the rectangle
+        """
         return self.__height * self.__width
 
     def perimeter(self):
+        """
+        return the perimeter of the rectangle
+        """
         if self.__height == 0 or self.__width == 0:
             return 0
         else:
