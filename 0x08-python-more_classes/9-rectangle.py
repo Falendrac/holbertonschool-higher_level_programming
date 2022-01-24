@@ -187,12 +187,5 @@ class Rectangle:
     def square(cls, size=0):
         """
         class method for create a new instance of a rectangle object
-        ...
-        Parameters
-        ----------
-        cls : Rectangle
-            the classe of the object
-        size : int
-            the size of the new rectangle
         """
         return Rectangle(size, size)
