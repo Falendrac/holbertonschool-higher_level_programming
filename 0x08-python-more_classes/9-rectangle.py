@@ -8,33 +8,6 @@ That define a rectangle.
 class Rectangle:
     """
     Define a Rectangle
-    ...
-    Attributes
-    ----------
-    __width : int
-        the width of the rectangle
-    __height : int
-        the height of the rectangle
-    number_of_instances : int
-        the current number of instance of rectangle object
-    print_symbol : any type
-        the symbol that str prints
-    Methods
-    -------
-    width(self)
-        the getter of width
-    width(self, value)
-        the setter of width
-    height(self)
-        the getter of height
-    height(self, value)
-        the setter of height
-    area(self)
-        return the area of the rectangle (height * width)
-    perimeter(self)
-        return the perimeter of the rectangle ( 2 * (height + width))
-    bigger_or_equal(rect_1, rect_2)
-        compare two rectangle and return the bigger
     """
     __height = None
     __width = None
@@ -137,7 +110,7 @@ class Rectangle:
         else:
             str = ""
             for loop in range(self.__height):
-                str += "#" * self.__width
+                str += format(self.print_symbol) * self.__width
                 if loop != self.__height - 1:
                     str += "\n"
             return str
