@@ -155,15 +155,3 @@ class Rectangle:
                 if loop != self.__height - 1:
                     str += "\n"
             return str
-
-    def __repr__(self):
-        """
-        return the represatention of rectangle in format string
-        """
-        if self.__height == 0 or self.__width == 0:
-            return ""
-        else:
-            return "<%s.%s object at %s>" % (
-                self.__class__.__module__, self.__class__.__name__,
-                hex(id(self))
-            )
