@@ -176,8 +176,7 @@ class Rectangle:
         Example:
         return "Rectangle(2, 4)
         """
-        return "Rectangle(" + str(self.__width) + ", " + \
-            str(self.__height) + ")"
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
         """
