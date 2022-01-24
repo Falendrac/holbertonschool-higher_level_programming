@@ -163,5 +163,5 @@ class Rectangle:
         Example:
         return "Rectangle(2, 4)
         """
-        return "Rectangle(" + str(self.__height) + ", " + \
-            str(self.__width) + ")"
+        return "Rectangle(" + str(self.__width) + ", " + \
+            str(self.__height) + ")"
