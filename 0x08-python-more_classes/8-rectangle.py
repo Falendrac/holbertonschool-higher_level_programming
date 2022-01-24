@@ -6,9 +6,6 @@ That define a rectangle.
 """
 
 
-from os import stat
-
-
 class Rectangle:
     """
     Define a Rectangle
