@@ -132,15 +132,15 @@ class Rectangle:
         """
         return the rectangle in format #
         """
+        result = ""
         if self.__height == 0 or self.__width == 0:
-            return ""
+            result += ''
         else:
-            str = ""
-            for loop in range(self.__height):
-                str += format(self.print_symbol) * self.__width
-                if loop != self.__height - 1:
-                    str += "\n"
-            return str
+            for row in range(self.__height):
+                result += str(self.print_symbol) * self.__width
+                if row < self.__height - 1:
+                    result += '\n'
+        return result
 
     def __repr__(self):
         """
@@ -188,4 +188,4 @@ class Rectangle:
         """
         class method for create a new instance of a rectangle object
         """
-        return Rectangle(size, size)
+        return cls(size, size)
