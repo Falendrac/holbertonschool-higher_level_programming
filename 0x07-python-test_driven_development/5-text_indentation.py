@@ -9,6 +9,6 @@ def text_indentation(text):
         raise TypeError("text must be a string")
     for loop in range(len(text)):
         if text[loop] in "?.:":
-            print("{}".format(text[loop], end="\n\n"))
+            print("{}\n".format(text[loop]))
         elif text[loop - 1] not in "?.:":
             print("{}".format(text[loop]), end="")
