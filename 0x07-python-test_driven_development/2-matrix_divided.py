@@ -38,7 +38,7 @@ def matrix_divided(matrix, div):
         for col in range(len(matrix[row])):
             if not isinstance(matrix[row][col], (int, float)):
                 raise TypeError("matrix must be a matrix \
-                (list of lists) of integers/floats")
+(list of lists) of integers/floats")
 
     new_matrix = list(map(list, matrix))
 
