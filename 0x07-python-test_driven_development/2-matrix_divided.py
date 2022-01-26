@@ -1,7 +1,30 @@
 #!/usr/bin/python3
+"""
+This is the second task for test driven
+
+...
+
+Methods
+-------
+matrix_divided(matrix, div)
+    divided a matrix by div
+"""
 
 
 def matrix_divided(matrix, div):
+    """
+    divided a matrix with div
+
+    ...
+
+    Parameters
+    ----------
+    matrix : int
+        the matrix we copy and divide
+
+    div : int
+        the divide
+    """
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
@@ -14,7 +37,8 @@ def matrix_divided(matrix, div):
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
             if not isinstance(matrix[row][col], (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a matrix \
+                (list of lists) of integers/floats")
 
     new_matrix = list(map(list, matrix))
 

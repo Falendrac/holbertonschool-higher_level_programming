@@ -14,7 +14,6 @@ Example for the function add_integer:
 >>> add_integer(2, 3)
 5
 """
-import doctest
 
 
 def add_integer(a, b=98):
