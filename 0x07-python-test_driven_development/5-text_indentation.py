@@ -30,9 +30,10 @@ def text_indentation(text):
         raise TypeError("text must be a string")
     for loop in range(len(text)):
         if text[loop] in "?.:":
-            print("{}".format(text[loop]))
+            print("{}\n".format(text[loop]))
             inspecial = True
         elif inspecial and text[loop] == ' ':
             pass
         else:
+            inspecial = False
             print("{}".format(text[loop]), end="")
