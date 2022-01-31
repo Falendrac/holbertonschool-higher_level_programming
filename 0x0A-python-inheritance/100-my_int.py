@@ -23,13 +23,13 @@ class MyInt(int):
     def __eq__(self, other):
         '''reversed equal'''
         if issubclass(type(self), type(other)):
-            return self.__index__() != self.__index__()
+            return self.__index__() != other.__index__()
         else:
             return False
 
     def __ne__(self, other):
         '''reversed not equal'''
         if issubclass(type(self), type(other)):
-            return self.__index__() == self.__index__()
+            return self.__index__() == other.__index__()
         else:
             return False
