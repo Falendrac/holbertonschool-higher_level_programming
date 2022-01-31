@@ -134,3 +134,24 @@ Using ''integer_validator''
     Traceback (most recent call last):
       ...
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", 6.3)
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", -6.3)
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", True)
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
