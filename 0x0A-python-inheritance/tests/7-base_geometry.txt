@@ -57,3 +57,73 @@ Using ''integer_validator''
     Traceback (most recent call last):
         ...
     TypeError: distance must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+-------------------------------------------------------------------------------
+
+    >>> bg.area(1)
+    Traceback (most recent call last):
+      ...
+    TypeError: area() takes 1 positional argument but 2 were given
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int")
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", 12, 43)
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", None)
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", [1, 2, 3])
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", (1, 2))
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", {"hello", "paris"})
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", {"hello": 5})
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
+
+-------------------------------------------------------------------------------
+
+    >>> bg.integer_validator("my_int", complex(2, 7))
+    Traceback (most recent call last):
+      ...
+    TypeError: my_int must be an integer
