@@ -22,6 +22,4 @@ class MyList(list):
     '''
     def print_sorted(self):
         '''print a sorted list'''
-        list_sorted = self.copy()
-        list_sorted.sort()
-        print(list_sorted)
+        print(sorted(self))
