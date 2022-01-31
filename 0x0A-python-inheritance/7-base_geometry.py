@@ -57,6 +57,6 @@ class BaseGeometry():
             if value is less or equal at 0
         '''
         if type(value) is not int:
-            raise TypeError(name + " must be an integer")
+            raise TypeError(str(name) + " must be an integer")
         if value <= 0:
-            raise ValueError(name + " must be greater than 0")
+            raise ValueError(str(name) + " must be greater than 0")
