@@ -141,6 +141,23 @@ class Rectangle(Base):
                 print("{}{}".format(" " * self.__x, "#" * self.__width))
 
     def __str__(self):
+        """return the string representation of rectangle"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height
             )
+
+    def update(self, *args):
+        """update attribute with value in args"""
+        get = 0
+        for val in args:
+            if get == 0:
+                self.id = val
+            elif get == 1:
+                self.width = val
+            elif get == 2:
+                self.height = val
+            elif get == 3:
+                self.x = val
+            elif get == 4:
+                self.y = val
+            get += 1
