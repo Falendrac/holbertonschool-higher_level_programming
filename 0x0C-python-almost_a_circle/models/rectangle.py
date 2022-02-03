@@ -39,7 +39,21 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, width):
-        """setter for width"""
+        """setter for width
+
+        ...
+
+        Raises
+        ------
+        TypeError
+            if the parameter is not an int
+        ValueError
+            if the parameter is less or equal to 0
+        """
+        if type(width) is not int:
+            raise TypeError("width must be an integer")
+        elif width <= 0:
+            raise ValueError("width must be > 0")
         self.__width = width
 
     @property
@@ -49,7 +63,21 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, height):
-        """setter for height"""
+        """setter for height
+
+        ...
+
+        Raises
+        ------
+        TypeError
+            if the parameter is not an int
+        ValueError
+            if the parameter is less or equal to 0
+        """
+        if type(height) is not int:
+            raise TypeError("height must be an integer")
+        elif height <= 0:
+            raise ValueError("height must be > 0")
         self.__height = height
 
     @property
@@ -59,7 +87,21 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, x):
-        """setter for x"""
+        """setter for x
+
+        ...
+
+        Raises
+        ------
+        TypeError
+            if the parameter is not an int
+        ValueError
+            if the parameter is less to 0
+        """
+        if type(x) is not int:
+            raise TypeError("x must be an integer")
+        elif x < 0:
+            raise ValueError("x must be >= 0")
         self.__x = x
 
     @property
@@ -69,5 +111,19 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, y):
-        """setter for y"""
+        """setter for y
+
+        ...
+
+        Raises
+        ------
+        TypeError
+            if the parameter is not an int
+        ValueError
+            if the parameter is less to 0
+        """
+        if type(y) is not int:
+            raise TypeError("y must be an integer")
+        elif y < 0:
+            raise ValueError("y must be >= 0")
         self.__y = y
