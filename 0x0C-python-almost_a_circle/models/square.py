@@ -47,3 +47,7 @@ class Square(Rectangle):
                 elif get == 3:
                     self.y = val
                 get += 1
+
+    def to_dictionary(self):
+        """return the the dictionnary representation of Rectangle"""
+        return {'id': self.id, 'x': self.x, 'size': self.width, 'y': self.y}
