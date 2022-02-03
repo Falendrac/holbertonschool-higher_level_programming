@@ -134,8 +134,11 @@ class Rectangle(Base):
 
     def display(self):
         """display the rectangle with # character"""
-        for row in range(self.__height):
-            print("{}".format("#" * self.__width))
+        for row in range(self.__height + self.__y):
+            if row < self.__y:
+                print()
+            else:
+                print("{}{}".format(" " * self.__x, "#" * self.__width))
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
