@@ -165,3 +165,7 @@ class Rectangle(Base):
                 elif get == 4:
                     self.y = val
                 get += 1
+
+    def to_dictionary(self):
+        """return the the dictionnary representation of Rectangle"""
+        return vars(self)
