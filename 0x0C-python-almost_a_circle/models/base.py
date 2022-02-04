@@ -23,6 +23,8 @@ class Base():
         static method that return a json string representation
     save_to_file(cls, list_objs)
         class method to create a json file
+    from_json_string(json_string)
+        static method that return the list of the json string
     """
     __nb_objects = 0
 
@@ -63,3 +65,10 @@ class Base():
         filename = cls.__name__ + ".json"
         with open(filename, "w+") as fd:
             fd.write(json_dict)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON string representation"""
+        if json_string is None or not json_string:
+            return []
+        return json.loads(json_string)
