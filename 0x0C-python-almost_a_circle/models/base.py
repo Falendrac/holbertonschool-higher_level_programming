@@ -2,6 +2,7 @@
 """The base of the module models"""
 
 import json
+from os.path import exists
 
 
 class Base():
@@ -59,9 +60,10 @@ class Base():
         create a file with the name
         of the class and the json representation of this class
         """
-        json_dict = ""
+        an_dict = []
         for obj in list_objs:
-            json_dict += obj.to_json_string([obj.to_dictionary()])
+            an_dict.append(obj.to_dictionary())
+        json_dict = obj.to_json_string(an_dict)
         filename = cls.__name__ + ".json"
         with open(filename, "w+") as fd:
             fd.write(json_dict)
@@ -75,6 +77,19 @@ class Base():
 
     @classmethod
     def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
         new_instance = cls(5, 5)
         new_instance.update(**dictionary)
         return new_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = cls.__name__ + ".json"
+        list_instance = []
+        if exists(filename):
+            with open(filename, "r+") as fd:
+                list_json = cls.from_json_string(fd.read())
+                for item in list_json:
+                    list_instance.append(cls.create(**item))
+        return list_instance
