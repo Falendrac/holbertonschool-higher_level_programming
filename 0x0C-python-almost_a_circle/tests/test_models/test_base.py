@@ -27,6 +27,14 @@ class TestBase(unittest.TestCase):
         test_too_many_arguments (no-working test):
             too many arguments given
     """
+    def setUp(self):
+        """Set the instance at 0"""
+        Base._Base__nb_objects = 0
+        pass
+
+    def tearDown(self):
+        """Set the instance at 0"""
+        pass
 
     def test_documentation(self):
         """test all documentation of module"""
@@ -73,10 +81,10 @@ class TestBase(unittest.TestCase):
         b5 = Base(-3)
         b6 = Base(2)
 
-        self.assertEqual(b1.id, 72)
-        self.assertEqual(b2.id, 73)
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 2)
         self.assertEqual(b3.id, 12)
-        self.assertEqual(b4.id, 74)
+        self.assertEqual(b4.id, 3)
         self.assertEqual(b5.id, -3)
         self.assertEqual(b6.id, 2)
 
@@ -89,53 +97,54 @@ class TestBase(unittest.TestCase):
 
     def test_toJsonString(self):
         """Convert list to Json content"""
-        l = [{"Salut": 1, "Bonjour": 2}]
-        string = Base.to_json_string(l)
+        list_json = [{"Salut": 1, "Bonjour": 2}]
+        string = Base.to_json_string(list_json)
         self.assertTrue(type(string), str)
         self.assertEqual(string, '[{"Salut": 1, "Bonjour": 2}]')
 
     def test_toJsonString_empty(self):
         """Convert empty list to Json content"""
-        l = []
-        string = Base.to_json_string(l)
+        list_json = []
+        string = Base.to_json_string(list_json)
         self.assertTrue(type(string), str)
         self.assertEqual(string, '[]')
 
     def test_toJsonString_None(self):
         """Convert None to Json content"""
-        l = None
-        string = Base.to_json_string(l)
+        list_json = None
+        string = Base.to_json_string(list_json)
         self.assertTrue(type(string), str)
         self.assertEqual(string, '[]')
 
     def test_fromJsonString(self):
         """Convert Json content to list"""
         string = '[{"Salut": 1, "Bonjour": 2}]'
-        l = Base.from_json_string(string)
-        self.assertTrue(type(l), list)
-        self.assertEqual(l, [{"Salut": 1, "Bonjour": 2}])
+        list_json = Base.from_json_string(string)
+        self.assertTrue(type(list_json), list)
+        self.assertEqual(list_json, [{"Salut": 1, "Bonjour": 2}])
 
     def test_fromJsonStringList(self):
         """Convert Json content to list"""
         string = '[{"Salut": 1, "Bonjour": 2}, {"Hola": 1}]'
-        l = Base.from_json_string(string)
-        self.assertTrue(type(l), list)
-        self.assertEqual(l[0], {"Salut": 1, "Bonjour": 2})
-        self.assertEqual(l[1], {"Hola": 1})
+        list_json = Base.from_json_string(string)
+        self.assertTrue(type(list_json), list)
+        self.assertEqual(list_json[0], {"Salut": 1, "Bonjour": 2})
+        self.assertEqual(list_json[1], {"Hola": 1})
 
     def test_fromJsonString_None(self):
         """Convert None Json content to list"""
         string = None
-        l = Base.from_json_string(string)
-        self.assertTrue(type(l), list)
-        self.assertEqual(l, [])
+        list_json = Base.from_json_string(string)
+        self.assertTrue(type(list_json), list)
+        self.assertEqual(list_json, [])
 
     def test_fromJsonString_len0(self):
         """Convert empty Json content to list"""
         string = ""
-        l = Base.from_json_string(string)
-        self.assertTrue(type(l), list)
-        self.assertEqual(l, [])
+        list_json = Base.from_json_string(string)
+        self.assertTrue(type(list_json), list)
+        self.assertEqual(list_json, [])
+
 
 if __name__ == "__main__":
     unittest.main()

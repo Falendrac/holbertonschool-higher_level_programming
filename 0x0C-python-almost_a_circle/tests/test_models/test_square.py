@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+test_square module
+This module test the class Square
+"""
+
 
 import unittest
 from models import square
@@ -11,6 +16,18 @@ from contextlib import redirect_stdout
 
 
 class TestSquareClass(unittest.TestCase):
+    """
+    test class square
+    """
+
+    def setUp(self):
+        """Set the instance at 0"""
+        Base._Base__nb_objects = 0
+        pass
+
+    def tearDown(self):
+        """Set the instance at 0"""
+        pass
 
     def test_documentation(self):
         """Test the documentations of class Square"""
@@ -51,7 +68,7 @@ class TestSquareClass(unittest.TestCase):
     def test_valid_case(self):
         """Test some valid cases with Square"""
         s1 = Square(5)
-        self.assertEqual(s1.id, 141)
+        self.assertEqual(s1.id, 1)
         self.assertEqual(s1.size, 5)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
@@ -67,7 +84,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(s2.height, 653)
 
         s3 = Square(4, 3, 3, None)
-        self.assertEqual(s3.id, 142)
+        self.assertEqual(s3.id, 2)
         self.assertEqual(s3.size, 4)
         self.assertEqual(s3.x, 3)
         self.assertEqual(s3.y, 3)
@@ -219,7 +236,9 @@ class TestSquareClass(unittest.TestCase):
         with io.StringIO() as buf, redirect_stdout(buf):
             r2.display()
             output = buf.getvalue()
-            self.assertEqual(output, (3 * "\n" + (" " * 7 + "#" * 8 + "\n") * 8))
+            self.assertEqual(
+                output, (3 * "\n" + (" " * 7 + "#" * 8 + "\n") * 8)
+                )
 
     ##########################################################
     # update
@@ -329,11 +348,11 @@ class TestSquareClass(unittest.TestCase):
         )
         self.assertEqual(
             r2.to_dictionary(),
-            {"id": 135, "x": 3, "size": 1, "y": 4},
+            {"id": 1, "x": 3, "size": 1, "y": 4},
         )
         self.assertEqual(
             r3.to_dictionary(),
-            {"id": 136, "x": 0, "size": 1, "y": 0},
+            {"id": 2, "x": 0, "size": 1, "y": 0},
         )
 
     ##########################################################
@@ -361,10 +380,12 @@ class TestSquareClass(unittest.TestCase):
         Square.save_to_file(listOfRectsInput)
         listOfRectsOutput = Square.load_from_file()
         self.assertEqual(
-            listOfRectsInput[0].to_dictionary(), listOfRectsOutput[0].to_dictionary()
+            listOfRectsInput[0].to_dictionary(),
+            listOfRectsOutput[0].to_dictionary()
         )
         self.assertEqual(
-            listOfRectsInput[1].to_dictionary(), listOfRectsOutput[1].to_dictionary()
+            listOfRectsInput[1].to_dictionary(),
+            listOfRectsOutput[1].to_dictionary()
         )
 
     def test_saveToFile_loadFromFile_empty(self):

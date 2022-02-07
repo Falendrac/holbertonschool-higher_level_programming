@@ -5,6 +5,7 @@ Execute all tests: python3 -m unittest discover tests
 Execute this test: python3 -m unittest tests/test_models/test_rectangle.py
 """
 
+
 import unittest
 import pycodestyle
 from models.base import Base
@@ -13,6 +14,7 @@ from os.path import exists
 import io
 from contextlib import redirect_stdout
 Rectangle = rectangle.Rectangle
+
 
 class TestRectangle(unittest.TestCase):
     """
@@ -63,6 +65,15 @@ class TestRectangle(unittest.TestCase):
     to_dictionary
         test the to_dictionary function of Rectangle
     """
+
+    def setUp(self):
+        """Set the instance at 0"""
+        Base._Base__nb_objects = 0
+        pass
+
+    def tearDown(self):
+        """Set the instance at 0"""
+        pass
 
     def test_documentation(self):
         """test all documentation of module"""
@@ -347,7 +358,9 @@ class TestRectangle(unittest.TestCase):
         with io.StringIO() as buf, redirect_stdout(buf):
             r2.display()
             output = buf.getvalue()
-            self.assertEqual(output, (2 * "\n" + (" " * 3 + "#" * 8 + "\n") * 7))
+            self.assertEqual(
+                output, (2 * "\n" + (" " * 3 + "#" * 8 + "\n") * 7)
+                )
 
     ##########################################################
     # update
@@ -470,11 +483,11 @@ class TestRectangle(unittest.TestCase):
         )
         self.assertEqual(
             r2.to_dictionary(),
-            {"id": 105, "width": 1, "height": 3, "x": 4, "y": 12},
+            {"id": 1, "width": 1, "height": 3, "x": 4, "y": 12},
         )
         self.assertEqual(
             r3.to_dictionary(),
-            {"id": 106, "width": 1, "height": 3, "x": 0, "y": 0},
+            {"id": 2, "width": 1, "height": 3, "x": 0, "y": 0},
         )
 
     ##########################################################
@@ -502,10 +515,12 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file(listOfRectsInput)
         listOfRectsOutput = Rectangle.load_from_file()
         self.assertEqual(
-            listOfRectsInput[0].to_dictionary(), listOfRectsOutput[0].to_dictionary()
+            listOfRectsInput[0].to_dictionary(),
+            listOfRectsOutput[0].to_dictionary()
         )
         self.assertEqual(
-            listOfRectsInput[1].to_dictionary(), listOfRectsOutput[1].to_dictionary()
+            listOfRectsInput[1].to_dictionary(),
+            listOfRectsOutput[1].to_dictionary()
         )
 
     def test_saveToFile_loadFromFile_empty(self):
