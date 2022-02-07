@@ -111,5 +111,25 @@ class Base():
     @staticmethod
     def draw(list_rectangles, list_squares):
         """draw the rectangle or the square"""
-        os.environ['DISPLAY'] = ":2.0"
         t = turtle.Turtle()
+
+        for rec in list_rectangles:
+            t.up()
+            t.setpos(rec.x, rec.y)
+            t.down()
+            for i in range(4):
+                if i == 0 or i == 2:
+                    t.forward(rec.width)
+                else:
+                    t.forward(rec.height)
+                t.right(90)
+
+        for squ in list_squares:
+            t.up()
+            t.setpos(rec.x, rec.y)
+            t.down()
+            for i in range(4):
+                t.forward(squ.size)
+                t.right(90)
+
+        turtle.done()
