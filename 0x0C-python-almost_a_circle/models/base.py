@@ -50,7 +50,7 @@ class Base():
     @staticmethod
     def to_json_string(list_dictionaries):
         """return the json string representation of list_dictionaries"""
-        if list_dictionaries is None or not list_dictionaries[0]:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -63,7 +63,7 @@ class Base():
         an_dict = []
         for obj in list_objs:
             an_dict.append(obj.to_dictionary())
-        json_dict = obj.to_json_string(an_dict)
+        json_dict = cls.to_json_string(an_dict)
         filename = cls.__name__ + ".json"
         with open(filename, "w+") as fd:
             fd.write(json_dict)
