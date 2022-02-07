@@ -68,7 +68,7 @@ class Base():
         for obj in list_objs:
             an_dict.append(obj.to_dictionary())
         json_dict = Base.to_json_string(an_dict)
-        with open(filename, "w+") as fd:
+        with open(filename, "w", encoding="UTF-8") as fd:
             fd.write(json_dict)
         fd.closed
 
