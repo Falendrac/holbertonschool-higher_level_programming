@@ -5,8 +5,6 @@ import json
 from os.path import exists
 import turtle
 import os
-from models.rectangle import Rectangle
-from models.square import Square
 
 
 class Base():
@@ -87,6 +85,9 @@ class Base():
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+
         if cls == Rectangle:
             new_instance = cls(5, 5)
         elif cls == Square:
