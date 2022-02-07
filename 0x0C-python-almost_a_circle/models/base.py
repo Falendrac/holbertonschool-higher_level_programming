@@ -3,6 +3,8 @@
 
 import json
 from os.path import exists
+import turtle
+import os
 
 
 class Base():
@@ -60,13 +62,15 @@ class Base():
         create a file with the name
         of the class and the json representation of this class
         """
+        filename = "{}.json".format(cls.__name__)
         an_dict = []
+
         for obj in list_objs:
             an_dict.append(obj.to_dictionary())
-        json_dict = cls.to_json_string(an_dict)
-        filename = cls.__name__ + ".json"
+        json_dict = Base.to_json_string(an_dict)
         with open(filename, "w+") as fd:
             fd.write(json_dict)
+        fd.closed
 
     @staticmethod
     def from_json_string(json_string):
@@ -93,3 +97,8 @@ class Base():
                 for item in list_json:
                     list_instance.append(cls.create(**item))
         return list_instance
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        os.environ['DISPLAY'] = ":2.0"
+        t = turtle.Turtle()
