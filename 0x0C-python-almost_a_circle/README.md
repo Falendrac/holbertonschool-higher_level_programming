@@ -30,3 +30,9 @@ You will also learn about:
 * [JSON encoder and decoder](https://docs.python.org/3/library/json.html)
 * [unittest module](https://docs.python.org/3.4/library/unittest.html#module-unittest)
 * [Python test cheatsheet](https://www.pythonsheets.com/notes/python-tests.html)
+
+### Colaboration
+
+Tests models write in colaboration with Thomas Lenormand, Mickael Boillaud and Joël Dumortier.
+
+[Holberton tests C#16](https://github.com/tlenormand/holberton_tests)
