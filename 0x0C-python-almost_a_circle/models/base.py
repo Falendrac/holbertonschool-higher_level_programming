@@ -110,5 +110,6 @@ class Base():
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """draw the rectangle or the square"""
         os.environ['DISPLAY'] = ":2.0"
         t = turtle.Turtle()
