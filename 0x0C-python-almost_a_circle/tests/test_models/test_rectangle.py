@@ -5,7 +5,6 @@ Execute all tests: python3 -m unittest discover tests
 Execute this test: python3 -m unittest tests/test_models/test_rectangle.py
 """
 
-
 import unittest
 import pycodestyle
 from models.base import Base
@@ -17,6 +16,7 @@ Rectangle = rectangle.Rectangle
 
 
 class TestRectangle(unittest.TestCase):
+
     """
     class that test the max integer function
     ValueError:
@@ -26,7 +26,6 @@ class TestRectangle(unittest.TestCase):
         negative y
         zero width
         zero height
-
     TypeError:
         too many arguments
         too few arguments
@@ -67,12 +66,10 @@ class TestRectangle(unittest.TestCase):
     """
 
     def setUp(self):
-        """Set the instance at 0"""
         Base._Base__nb_objects = 0
         pass
 
     def tearDown(self):
-        """Set the instance at 0"""
         pass
 
     def test_documentation(self):
@@ -113,6 +110,17 @@ class TestRectangle(unittest.TestCase):
 
         module_class = len(Rectangle.to_dictionary.__doc__)
         self.assertGreater(module_class, 0)
+
+    def test_priority_width_height(self):
+        """fuction that test for TypeError"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("str", "str", 3, None)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("str", -2, 3, None)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(-1, -2, 3, None)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(-1, "str", 3, None)
 
     def test_subclass(self):
         """fuction that test if Rectangle is a subclass of Base"""
@@ -182,7 +190,12 @@ class TestRectangle(unittest.TestCase):
         """fuction that test for ValueError"""
         with self.assertRaises(ValueError):
             r1 = Rectangle(10, 2)
-            r1.width = 0
+            r1.height = 0
+
+    def test_zero_height2(self):
+        """fuction that test for ValueError"""
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(10, 0)
 
     # TypeError
 
@@ -558,7 +571,7 @@ class TestRectangle(unittest.TestCase):
         self.assertNotEqual(r1, r2)
         self.assertIsNot(r1, r2)
 
-     # test load_from_file
+    # save_to_file | load_from_file || save_to_file_csv | load_form_file_csv
 
     def test_load_from_file(self):
         r6 = Rectangle(10, 7, 2, 8, 89)
@@ -573,8 +586,6 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNot(r6, r8)
         self.assertIsNot(r7, r9)
 
-    # save_to_file
-
     def test_save_to_file(self):
         r1 = Rectangle(10, 7, 2, 8, 10)
         r2 = Rectangle(2, 4, 0, 0, 19)
@@ -585,7 +596,8 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([r1, r2])
         with open(filename, "r") as file:
             f = (file.read())
-        self.assertEqual(f, s3)
+        self.assertEqual(
+            f, s3)
         Rectangle.save_to_file(None)
         with open(filename, "r") as file:
             f = (file.read())
@@ -594,6 +606,31 @@ class TestRectangle(unittest.TestCase):
         with open(filename, "r") as file:
             f = (file.read())
         self.assertEqual(f, '[]')
+
+    def test_saveToFile_loadFromFile(self):
+        """Check the both saveto, and loadfrom function to a json file"""
+        r1 = Rectangle(1, 2, 3, 4, 1)
+        r2 = Rectangle(1, 2, 3, 4, 2)
+        listOfRectsInput = [r1, r2]
+        Rectangle.save_to_file(listOfRectsInput)
+        listOfRectsOutput = Rectangle.load_from_file()
+        self.assertEqual(
+            listOfRectsInput[0].to_dictionary(
+            ), listOfRectsOutput[0].to_dictionary()
+        )
+        self.assertEqual(
+            listOfRectsInput[1].to_dictionary(
+            ), listOfRectsOutput[1].to_dictionary()
+        )
+
+    def test_saveToFile_loadFromFile_empty(self):
+        """Check the both saveto, and loadfrom function to a json file"""
+        listOfRectsInput = []
+        Rectangle.save_to_file(listOfRectsInput)
+        listOfRectsOutput = Rectangle.load_from_file()
+        self.assertEqual(
+            listOfRectsInput, listOfRectsOutput
+        )
 
 
 if __name__ == "__main__":

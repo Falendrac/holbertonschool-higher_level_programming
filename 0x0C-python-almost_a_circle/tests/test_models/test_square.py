@@ -1,32 +1,29 @@
 #!/usr/bin/python3
 """
-test_square module
-This module test the class Square
+This is the "test_square" module
+Thes test_square module supplies a class to test class Square
 """
 
-
+from re import S
 import unittest
-from models import square
-from models.square import Square
-from models.rectangle import Rectangle
 from models.base import Base
-import pycodestyle
+from models.rectangle import Rectangle
+from models.square import Square
+from os.path import exists
 import io
 from contextlib import redirect_stdout
 
 
-class TestSquareClass(unittest.TestCase):
+class TestSquare(unittest.TestCase):
     """
-    test class square
+    test classe square
     """
 
     def setUp(self):
-        """Set the instance at 0"""
         Base._Base__nb_objects = 0
         pass
 
     def tearDown(self):
-        """Set the instance at 0"""
         pass
 
     def test_subclass(self):
@@ -57,6 +54,18 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(r3.x, 0)
         self.assertEqual(r3.y, 0)
         self.assertEqual(r3.id, 2)
+
+
+    def test_priority_width_height(self):
+        """fuction that test for TypeError"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("str", "str", 3, None)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("str", -2, 3, None)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1, -2, 3, None)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1, "str", 3, None)
 
     # tests getters
 
@@ -278,7 +287,8 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(r1.to_dictionary(), {
                          'id': 1, 'size': 10, 'x': 10, 'y': 0})
 
-    # test load_from_file
+    # save_to_file | load_from_file || save_to_file_csv | load_form_file_csv
+
     def test_load_from_file(self):
 
         s6 = Square(10)
@@ -292,8 +302,6 @@ class TestSquareClass(unittest.TestCase):
         self.assertIsInstance(s9, Square)
         self.assertIsNot(s6, s8)
         self.assertIsNot(s7, s9)
-
-    # test save to file
 
     def test_save_to_file(self):
 
@@ -315,3 +323,30 @@ class TestSquareClass(unittest.TestCase):
         with open("Square.json", "r") as file:
             f = (file.read())
         self.assertEqual(f, '[]')
+
+    def test_saveToFile_loadFromFile(self):
+        """Check the both saveto, and loadfrom function to a json file"""
+        r1 = Square(1, 2, 3, 4)
+        r2 = Square(1, 2, 3, 4)
+        listOfRectsInput = [r1, r2]
+        Square.save_to_file(listOfRectsInput)
+        listOfRectsOutput = Square.load_from_file()
+        self.assertEqual(
+            listOfRectsInput[0].to_dictionary(), listOfRectsOutput[0].to_dictionary()
+        )
+        self.assertEqual(
+            listOfRectsInput[1].to_dictionary(), listOfRectsOutput[1].to_dictionary()
+        )
+
+    def test_saveToFile_loadFromFile_empty(self):
+        """Check the both saveto, and loadfrom function to a json file"""
+        listOfRectsInput = []
+        Square.save_to_file(listOfRectsInput)
+        listOfRectsOutput = Square.load_from_file()
+        self.assertEqual(
+            listOfRectsInput, listOfRectsOutput
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
