@@ -65,6 +65,9 @@ class Base():
         filename = "{}.json".format(cls.__name__)
         an_dict = []
 
+        if list_objs is None or len(list_objs) == 0:
+            list_objs = []
+
         for obj in list_objs:
             an_dict.append(obj.to_dictionary())
         json_dict = Base.to_json_string(an_dict)
