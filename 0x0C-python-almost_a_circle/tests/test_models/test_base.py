@@ -80,6 +80,8 @@ class TestBase(unittest.TestCase):
         b4 = Base()
         b5 = Base(-3)
         b6 = Base(2)
+        b7 = Base("Holberthon")
+        b8 = Base(4.5)
 
         self.assertEqual(b1.id, 1)
         self.assertEqual(b2.id, 2)
@@ -87,6 +89,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b4.id, 3)
         self.assertEqual(b5.id, -3)
         self.assertEqual(b6.id, 2)
+        self.assertEqual(b7.id, "Holberthon")
+        self.assertEqual(b8.id, 4.5)
 
     def test_too_many_arguments(self):
         """
