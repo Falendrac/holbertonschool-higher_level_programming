@@ -4,12 +4,18 @@
 
 const process = require('process');
 
-const unique = (value, index, self) => {
-  return self.indexOf(value) === index
-}
+let highest = 0;
+let second = 0;
 
-const arrayCopy = process.argv.slice(2).filter(unique).map(function (item) {
+const arrayCopy = process.argv.slice(2).map(function (item) {
   return parseInt(item);
 });
 
-console.log(arrayCopy.sort(function (a, b) { return b - a; })[1]);
+for (let loop = 0; loop < arrayCopy.length; loop++) {
+  if (highest < arrayCopy[loop]) {
+    second = highest;
+    highest = arrayCopy[loop];
+  }
+}
+
+console.log(second);
