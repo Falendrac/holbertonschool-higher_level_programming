@@ -4,7 +4,11 @@
 
 const process = require('process');
 
-const arrayCopy = process.argv.slice(2).map(function (item) {
+const unique = (value, index, self) => {
+  return self.indexOf(value) === index
+}
+
+const arrayCopy = process.argv.slice(2).filter(unique).map(function (item) {
   return parseInt(item);
 });
 
