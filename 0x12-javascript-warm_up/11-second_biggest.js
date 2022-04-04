@@ -8,6 +8,4 @@ const arrayCopy = process.argv.slice(2).map(function (item) {
   return parseInt(item);
 });
 
-arrayCopy.sort();
-
-console.log(arrayCopy[arrayCopy.length - 2]);
+console.log(arrayCopy.sort(function (a, b) { return b - a; })[1]);
