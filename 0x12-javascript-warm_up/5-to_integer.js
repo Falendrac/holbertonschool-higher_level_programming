@@ -3,7 +3,7 @@
 /* prints My number: <first argument converted in integer>
 if the first argument can be converted to an integer */
 
-import process from 'process';
+const process = require('process');
 
 if (isNaN(process.argv[2])) {
   console.log('Not a number');

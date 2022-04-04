@@ -2,7 +2,7 @@
 
 /* prints the addition of 2 integers */
 
-import process from 'process';
+const process = require('process');
 
 function factorial (a) {
   if (isNaN(a)) {

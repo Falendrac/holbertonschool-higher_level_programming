@@ -4,7 +4,7 @@
 Where x is the first argument of the script
 */
 
-import process from 'process';
+const process = require('process');
 
 if (isNaN(process.argv[2])) {
   console.log('Missing number of occurrences');

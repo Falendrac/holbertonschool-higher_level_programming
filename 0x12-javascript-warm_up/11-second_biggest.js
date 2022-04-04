@@ -2,7 +2,7 @@
 
 /* prints the addition of 2 integers */
 
-import process from 'process';
+const process = require('process');
 
 const arrayCopy = process.argv.slice(2).map(function (item) {
   return parseInt(item);
