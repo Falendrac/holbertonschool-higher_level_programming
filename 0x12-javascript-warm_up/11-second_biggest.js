@@ -15,6 +15,8 @@ for (let loop = 0; loop < arrayCopy.length; loop++) {
   if (highest < arrayCopy[loop]) {
     second = highest;
     highest = arrayCopy[loop];
+  } else if (second < arrayCopy[loop]) {
+    second = arrayCopy[loop];
   }
 }
 
