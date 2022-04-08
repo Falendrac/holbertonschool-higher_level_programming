@@ -20,4 +20,4 @@ if __name__ == '__main__':
         session.add(louisiana)
         session.commit()
 
-        print(louisiana.id)
+        print("{}".format(louisiana.id))

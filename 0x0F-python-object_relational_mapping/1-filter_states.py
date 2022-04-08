@@ -19,7 +19,7 @@ def selectStates():
     cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
 
     for row in cur:
-        print(row)
+        print("{}".format(row))
 
     cur.close()
     db.close()

@@ -27,8 +27,7 @@ def selectStates():
     for row in cur:
         cities += row[0] + ", "
 
-    cities = cities[0:-2]
-    print(cities)
+    print("{}".format(cities[0:-2]))
 
     cur.close()
     db.close()

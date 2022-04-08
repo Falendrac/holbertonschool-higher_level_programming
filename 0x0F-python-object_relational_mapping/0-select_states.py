@@ -19,7 +19,7 @@ def selectStates():
     cur.execute("SELECT * FROM states ORDER BY id")
 
     for row in cur:
-        print(row)
+        print("{}".format(row))
 
     cur.close()
     db.close()

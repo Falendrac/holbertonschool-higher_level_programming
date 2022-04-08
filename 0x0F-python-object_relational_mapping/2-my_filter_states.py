@@ -21,7 +21,7 @@ def selectStates():
         % sys.argv[4])
 
     for row in cur:
-        print(row)
+        print("{}".format(row))
 
     cur.close()
     db.close()
