@@ -17,8 +17,8 @@ def selectStates():
         )
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name = '" + sys.argv[4] + "' ORDER BY id"
-        )
+        "SELECT * FROM states WHERE name = '%s' ORDER BY id"
+        % sys.argv[4])
 
     for row in cur:
         print(row)
