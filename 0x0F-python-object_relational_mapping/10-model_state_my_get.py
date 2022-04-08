@@ -14,13 +14,12 @@ if __name__ == '__main__':
             sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
-    session = Session()
-    result = session.query(State).filter(State.name == sys.argv[4])
 
-    if result.count() == 0:
-        print('Not found')
-    else:
-        for row in result:
-            print("{}".format(row.id))
+    with Session() as session:
+        result = session.query(State).filter(State.name == sys.argv[4])
 
-    session.close()
+        if result.count() == 0:
+            print('Not found')
+        else:
+            for row in result:
+                print("{}".format(row.id))

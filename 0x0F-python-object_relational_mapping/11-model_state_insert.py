@@ -14,11 +14,10 @@ if __name__ == '__main__':
             sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
-    session = Session()
-    louisiana = State(name='Louisiana')
-    session.add(louisiana)
-    session.commit()
 
-    print(louisiana.id)
+    with Session() as session:
+        louisiana = State(name='Louisiana')
+        session.add(louisiana)
+        session.commit()
 
-    session.close()
+        print(louisiana.id)
