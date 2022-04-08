@@ -17,7 +17,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
-        resultCity = session.query(City, State).filter(State.id == City.state_id).all()
+        resultCity = session.query(City, State).filter(
+            State.id == City.state_id
+            ).all()
 
         for rowCity, rowState in resultCity:
-            print("{}: ({}) {}".format(rowState.name, rowCity.id, rowCity.name))
+            print(
+                "{}: ({}) {}".format(rowState.name, rowCity.id, rowCity.name)
+                )
