@@ -16,7 +16,7 @@ def selectStates():
         database=sys.argv[3]
         )
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id")
 
     for row in cur:
         print("{}".format(row))
