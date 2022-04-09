@@ -17,7 +17,7 @@ def selectStates():
         )
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name = '%s' ORDER BY id"
+        "SELECT * FROM states WHERE BINARY name = '%s' ORDER BY id"
         % sys.argv[4])
 
     result = cur.fetchall()
