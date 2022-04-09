@@ -20,7 +20,8 @@ def selectStates():
         "SELECT * FROM states WHERE name = '%s' ORDER BY id"
         % sys.argv[4])
 
-    for row in cur:
+    result = cur.fetchall()
+    for row in result:
         print("{}".format(row))
 
     cur.close()
