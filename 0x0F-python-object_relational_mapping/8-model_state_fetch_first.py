@@ -16,6 +16,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
-        result = session.query(State).first()
+        result = session.query(State)
 
-        print("{}: {}".format(result.id, result.name))
+        if result.count() == 0:
+            print("Nothing")
+        else:
+            result = session.query(State).first()
+            print("{}: {}".format(result.id, result.name))
