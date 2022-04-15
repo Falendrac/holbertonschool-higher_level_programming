@@ -17,15 +17,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
-        resultCity = session.query(City, State).filter(
-            State.id == City.state_id
-            ).all()
+        resultCity = session.query(State).order_by(State.id)
 
-        stateid = 0
-        for rowCity, rowState in resultCity:
-            if stateid != rowState.id:
-                print("{}: {}".format(rowState.id, rowState.name))
-                stateid = rowState.id
-            print(
-                "   {}: {}".format(rowCity.id, rowCity.name)
-                )
+        for rowState in resultCity:
+            print("{}: {}".format(rowState.id, rowState.name))
+            for rowCity in rowState.cities:
+                print(
+                    "\t{}: {}".format(rowCity.id, rowCity.name)
+                    )
