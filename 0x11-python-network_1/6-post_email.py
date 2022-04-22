@@ -13,8 +13,8 @@ def main():
     Main function
     '''
     email = {'email': sys.argv[2]}
-    req = requests.post(sys.argv[1], data = email)
-    print("{}".format(req.content.decode('utf-8')))
+    req = requests.post(sys.argv[1], data=email)
+    print(req.text)
 
 
 if __name__ == '__main__':
