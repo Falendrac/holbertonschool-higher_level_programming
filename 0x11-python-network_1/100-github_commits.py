@@ -18,9 +18,9 @@ def main():
     req = requests.get(url)
     api_info = req.json()
 
-    for commit in api_info[0:10]:
-        print("{}: {}".format(commit.get('sha'),
-                              commit.get('commit')
+    for i in range(0, 10):
+        print("{}: {}".format(api_info[i].get('sha'),
+                              api_info[i].get('commit')
                               .get('author').get('name')))
 
 
