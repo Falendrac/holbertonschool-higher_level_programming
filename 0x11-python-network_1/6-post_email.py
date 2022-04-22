@@ -14,7 +14,7 @@ def main():
     '''
     email = {'email': sys.argv[2]}
     req = requests.post(sys.argv[1], data = email)
-    print(req.text)
+    print("{}".format(req.content.decode('utf-8')))
 
 
 if __name__ == '__main__':
