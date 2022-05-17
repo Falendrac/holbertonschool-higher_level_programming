@@ -2,13 +2,12 @@
 // script that display the status code of a GET request.
 const axios = require('axios').default;
 
-if (process.argv.length === 2) {
-  axios.get(process.argv[2])
-    .then(function (response) {
-      console.log(`code: ${response.status}`);
-    })
-    .catch(function (error) {
-      console.log(`code: ${error.response.status}`);
-    })
-    .then(function () { });
-}
+axios.get(process.argv[2])
+  .then(function (response) {
+    console.log(`code: ${response.status}`);
+  })
+  .catch(function (error) {
+    console.log(`code: ${error.response.status}`);
+  })
+  .then(function () { });
+
