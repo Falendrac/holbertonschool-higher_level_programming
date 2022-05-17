@@ -8,9 +8,11 @@ const axios = require('axios').default;
 axios.get(process.argv[2])
   .then(function (response) {
     let count = 0;
-    for (let i = 0; i < response.data.results.length; i++) {
-      if (response.data.results[i].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-        count++;
+    for (const film of response.data.results) {
+      for (const actors of film.characters) {
+        if (actors.includes('people/18/')) {
+          count++;
+        }
       }
     }
     console.log(count);
