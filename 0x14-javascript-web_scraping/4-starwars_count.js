@@ -16,6 +16,6 @@ axios.get(process.argv[2])
     console.log(count);
   })
   .catch(function (error) {
-    console.log(`code: ${error.response.status}`);
+    console.log(error);
   })
   .then(function () { });
