@@ -10,4 +10,3 @@ axios.get(process.argv[2])
     console.log(`code: ${error.response.status}`);
   })
   .then(function () { });
-
